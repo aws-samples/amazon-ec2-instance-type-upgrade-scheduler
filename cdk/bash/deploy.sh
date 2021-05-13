@@ -73,12 +73,6 @@ function bootstrap() {
   run "cdk bootstrap aws://${AWS_ACCOUNT}/$region --profile $profile"
 }
 
-function deploy_base() {
-  if [ $component == "bucket" ]; then
-    run "cdk deploy ${DR}Bucket --require-approval never --profile ${PROFILE}"
-  fi
-}
-
 function deploy_scheduler() {
   if [ $component == "all" ] || [ $component == "scheduler" ]; then
     run "cdk deploy SchedulerStack --require-approval never --profile ${PROFILE}"
@@ -90,7 +84,6 @@ function deploy() {
     bootstrap $REGION $PROFILE
   fi
 
-  deploy_base
   deploy_scheduler
 
   run "echo 'bye.'"
@@ -98,10 +91,8 @@ function deploy() {
 
 function destroy() {
   if [ $component == "all" ]; then
-    run "cdk destroy SchedulerStack            --force --profile ${PROFILE}"
-
     run "aws s3 rm s3://$(bucket)          --recursive --profile ${PROFILE}"
-    run "cdk destroy ${DR}Bucket               --force --profile ${PROFILE}"
+    run "cdk destroy SchedulerStack            --force --profile ${PROFILE}"
   fi
 }
 

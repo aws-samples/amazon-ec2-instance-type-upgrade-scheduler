@@ -8,9 +8,9 @@ secondly, the cost of using instances per unit time has been reduced. It is not 
 However, when the number of instances is large and the instance relationship is complicated, to plan a feasible and low-cost instance upgrade with manual operation would be significantly time-consuming and difficult. 
 This project focuses on how to effectively deal with large-scale instance model upgrades. 
 The effectiveness of model upgrades are three-fold. 
-1. cost optimization: On the basis of the cost reduction of the new model, we fully consider the limitation of the reserved instance period to maximize the benefits of the reserved instance; 
-2. take into account the instance relationship: comprehensively take into account the complex associations and dependencies between the instances, such as master-slave database pair, load balancer group, etc., to minimize the impact of instance upgrades on the overall operation of the system, and make it a smooth transition; 
-3. take care of reality constraints: the actual production process has different priorities, and there are various restrictions during the upgrade process, such as workdays vs. holidays, daily processing or downtime limit of instances, etc. 
+1. Cost optimization: On the basis of the cost reduction of the new model, we fully consider the limitation of the reserved instance period to maximize the benefits of the reserved instance; 
+2. Take into account the instance relationship: comprehensively take into account the complex associations and dependencies between the instances, such as master-slave database pair, load balancer group, etc., to minimize the impact of instance upgrades on the overall operation of the system, and make it a smooth transition; 
+3. Take care of reality constraints: the actual production process has different priorities, and there are various restrictions during the upgrade process, such as workdays vs. holidays, daily processing or downtime limit of instances, etc. 
 
 The above points virtually increase the difficulty and complexity of the model upgrade of the planning example, making manual planning time-consuming and laborious. 
 This project uses a lightweight structured query language and AWS's serverless solution to achieve a new and universal model upgrade architecture for planning examples to achieve two goals. 
@@ -23,7 +23,7 @@ An article was published in AWS Blog to introduce the solution in detail.
 
 ## Deployment
 CDK is used as the infrastructure as code solution.
-A script file named `deploy.sh` is provided to facilitate resource provisioning process.
+A script file named `deploy.sh` is provided to facilitate the resource provisioning process.
 To deploy the AWS resources, export the following three environmental properties and run the script.
 
 ```bash
